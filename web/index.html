@@ -1,0 +1,831 @@
+ <!DOCTYPE html>
+<html>
+  <title>Christian Henkel / HS-Esslingen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'>
+  MathJax.Hub.Config({
+  tex2jax: {
+  inlineMath: [['$','$'], ['\\(','\\)']],
+  processEscapes: true
+  }
+  });
+  </script>
+  <style>
+  body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+  </style>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42270670-3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-42270670-3');
+    </script>
+  </head>
+  <body class="w3-light-grey">
+    <link rel="import" href="content_m1la.html" />
+    <!-- w3-content defines a container for fixed size centered content,
+    and is wrapped around the whole page content, except for the footer in this example -->
+    <div class="w3-content" style="max-width:1400px">
+      <!-- Header -->
+      <!-- <header class="w3-container w3-center w3-padding-32">
+        <h2><b>Christian Henkel</b></h2>
+      </header> -->
+      <!-- Grid -->
+      <div class="w3-row">
+        <!-- Blog entries -->
+        <div class="w3-col l8 s12">
+          <!-- Blog entry -->
+          <div class="w3-card-4 w3-margin w3-white">
+            <div style="width:100%; height: 70px; overflow: hidden">
+              <img src="https://farm6.staticflickr.com/5304/5669490355_b283db4e04_o_d.png" style="width:100%; margin-top: -20px;">
+            </div>
+            <div class="w3-container">
+              <h3><b>Mathe 1 LA SoSe18</b></h3>
+              <h5>Planung, <span class="w3-opacity">Stand 20.04.2018</span></h5>
+            </div>
+            <table class="w3-table">
+              <tr>
+                <th>Datum</th>
+                <th>Raum</th>
+                <th>Themen</th>
+                <th>Definitionen</th>
+                <th>Beispiele</th>
+                <th>Hausaufgaben</th>
+              </tr>
+              <!--
+              #######################################################################
+              -->
+              <tr>
+                <td>16.03.18 7:35</td>
+                <td>S01.-122</td>
+                <td><i>1.1</i> LGS</td>
+                <td><a href="#" onclick="document.getElementById('1_1_Def_LGS').style.display='block';return false;">LGS</a>
+                <a href="#" onclick="document.getElementById('1_1_Def_aequi').style.display='block';return false;">Äqui</a>
+                <a href="#" onclick="document.getElementById('1_1_Def_Gauß').style.display='block';return false;">Gauß</a></td>
+                <td>
+                  <a href="#" onclick="document.getElementById('1_1_Bsp_2unbek').style.display='block';return false;">2 unbek</a>
+                  <a href="#" onclick="document.getElementById('1_1_Bsp_3unbek').style.display='block';return false;">3 unbek</a>
+                </td>
+                <td>
+                  <a href="#" onclick="document.getElementById('1_1_HA1').style.display='block';return false;">1</a>
+                  <a href="#" onclick="document.getElementById('1_1_HA2').style.display='block';return false;">2</a></td>
+                </tr>
+                <div class="w3-modal" id="1_1_Def_LGS">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_Def_LGS').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Definition <b>Lineares Gleichungssystem</b></h3>
+                      Ein <b>LGS</b> (Lineares Gleichungssystem) besteht aus $m$ Gleichungen, die $n$ Unbekannte definieren.
+                      $$ \begin{eqnarray}
+                      a_{11} x_1 & + a_{12} x_2 & + \cdots & + a_{1n} x_n & = b_1 \\
+                      a_{21} x_1 & + a_{22} x_2 & + \cdots & + a_{2n} x_n & = b_2 \\
+                      \vdots ~ & & &  & \hspace{1.5em} \vdots \\
+                      a_{m1} x_1 & + a_{m2} x_2 & + \cdots & + a_{mn} x_n & = b_ m
+                      \end{eqnarray} $$
+                      Die Werte $a_{ij}$ werden <b>Koeffizienten</b> gennant, $b_i$ <b>Absolutglieder</b>.
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_1_Def_aequi">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_Def_aequi').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Definition <b>Äquivalenzumformungen</b></h3>
+                      Folgende Operationen zählen zu den <b>Äquivalenzumformungen</b>:
+                      <br/>
+                      <ul class="w3-ul w3-card-4" style="width:100%">
+                        <li><b>Vertauschen</b> von 2 Gleichungen.</li>
+                        <li><b>Multiplikation</b> mit einem Faktor <i>ungleich Null</i>.</li>
+                        <li><b>Addition</b> einer der Gleichung zu einer anderen.</li>
+                      </ul>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_1_Def_Gauß">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_Def_Gauß').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Definition <b>Gauß Algorithmus</b></h3>
+                      Der <b>Gauß Algorithmus</b> besteht aus den folgenden Schritten:
+                      <br/>
+                      <ul class="w3-ul w3-card-4" style="width:100%">
+                        <li>1. Erzeugen der <b>Dreiecksform</b> durch Äquivalenzumformung. (Auch <b>Vorwärtseinsetzen</b> genannt)
+                          $$ \begin{eqnarray}
+                          a_{11} x_1 & + a_{12} x_2 & + \cdots & + a_{1n} x_n & = b_1 \\
+                          & a_{22} x_2 & + \cdots & + a_{2n} x_n & = b_2 \\
+                          & & \ddots ~ & & \hspace{1.5em} \vdots \\
+                          & & & a_{mn} x_n & = b_ m
+                          \end{eqnarray} $$
+                        </li>
+                        <li>2. Bestimmen der Lösung durch <b>Rückwärtseinsetzen</b>.</li>
+                      </ul>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_1_Bsp_2unbek">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_Bsp_2unbek').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>LGS mit 2 Unbekannten</b></h3>
+                      $$ \begin{eqnarray}
+                      2 x & + 3 y & = 5 \\
+                      -3 x & + 8 y & = 0
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_1_Bsp_2unbek" src="https://www.geogebra.org/material/iframe/id/eUZrmQhq/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_1_Bsp_3unbek">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_Bsp_3unbek').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>LGS mit 3 Unbekannten</b></h3>
+                      $$ \begin{eqnarray}
+                      x_1 &-~  x_2 &+~5 x_3 &= 12 \\
+                      3 x_1 &-~8 x_2 &-~  x_3 &= 9 \\
+                      10 x_1 &+v5 x_2 &-~2 x_3 &= 1
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_1_Bsp_3unbek" src="https://www.geogebra.org/material/iframe/id/xXgCNJ45/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_1_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3><b>Hausaufgabe 1</b></h3>
+                      Stellen Sie das folgende LGS grafisch dar und finden Sie die Lösung rechnerisch:
+                      $$ \begin{eqnarray}
+                      x_1 & &= 1 \\
+                      x_1 &+~2 x_2 &= 3
+                      \end{eqnarray} $$
+                      Wie viele Lösungen besitzt das LGS?
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_1_HA2">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_1_HA2').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3><b>Hausaufgabe 2</b></h3>
+                      Stellen Sie das folgende LGS grafisch dar:
+                      $$ \begin{eqnarray}
+                      4 a &+~8 b &= 4 \\
+                      a &+~2 b &= 3
+                      \end{eqnarray} $$
+                      Wie viele Lösungen besitzt das LGS?
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <!--
+                #######################################################################
+                -->
+                <tr>
+                  <td>23.03.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>1.2</i> LGS</td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('1_2_loesungen').style.display='block';return false;">Lösungen</a>
+                    <a href="#" onclick="document.getElementById('1_2_formen').style.display='block';return false;">Formen</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('1_2_Bsp_ohneLsg').style.display='block';return false;">keine Lsg</a>
+                    <a href="#" onclick="document.getElementById('1_2_Bsp_redundant').style.display='block';return false;">redundant</a>
+                    <a href="#" onclick="document.getElementById('1_2_Bsp_ueberbest').style.display='block';return false;">überbest</a>
+                    <a href="#" onclick="document.getElementById('1_2_Bsp_homogen').style.display='block';return false;">homogen</a>
+                    <a href="#" onclick="document.getElementById('1_2_Bsp_parameter').style.display='block';return false;">Parameter</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('1_2_HA1').style.display='block';return false;">1</a>
+                  </td>
+                </tr>
+                <div class="w3-modal" id="1_2_loesungen">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_loesungen').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3><b>Spezielle Lösungsmengen</b></h3>
+                      <ul class="w3-ul w3-card-4" style="width:100%">
+                        <li>
+                          LGS mit einer Gleichung der Form
+                          $$ 0 \cdot x_1 + 0 \cdot x_2 + \cdots + 0 \cdot x_n = b, ~ b \neq 0 $$
+                          besitzen <b>keine Lösung</b>.
+                        </li>
+                        <li>
+                          LGS mit Gleichungen der Form
+                          $$ \begin{eqnarray}
+                          a_{11} x_1 & + \cdots + a_{12} x_2 + & a_{1n-1} x_{n-1} + \cdots +  a_{1n} x_n & = b_1 \\
+                          & & a_{2n-1} x_{n-1} + \cdots + a_{2n} x_n & = b_2 \\
+                          \end{eqnarray} $$
+                          besitzen <b>unendlich viele Lösungen</b>.
+                        </li>
+                        <li>
+                          Entstehen beim Lösen Gleichungen der Form
+                          $$ 0 \cdot x_1 + 0 \cdot x_2 + \cdots + 0 \cdot x_n = 0 $$,
+                          nennt man diese <b>redundant</b>. Sie können weggelassen werden.
+                        </li>
+                      </ul>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_2_formen">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_formen').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3><b>Spezielle Formen</b></h3>
+                      <ul class="w3-ul w3-card-4" style="width:100%">
+                        <li>
+                          LGS mit mehr Gleichungen als Variablen nennt man <b>überbestimmt</b>.
+                        </li>
+                        <li>
+                          LGS mit wengier Gleichungen als Variablen nennt man <b>unterbestimmt</b>.
+                        </li>
+                        <li>
+                          LGS mit allen Linearfaktoren gleich Null ($b_{1m} = 0$) nennt man <b>homogen</b>. Andere inhomogen.<br/>
+                          Homogene LGS besitzen eine <i>triviale Lösung</i>.
+                        </li>
+                      </ul>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <!-- Bsp -->
+                <div class="w3-modal" id="1_2_Bsp_ohneLsg">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_Bsp_ohneLsg').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>LGS ohne Lösung</b></h3>
+                      $$ \begin{eqnarray}
+                      x_1 &+~  x_2 &+~ x_3 &= 6 \\
+                      3 x_1 &+~2 x_2 &+~  x_3 &= 10 \\
+                      2 x_1 &+~3 x_2 &+~4 x_3 &= 2
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_2_Bsp_ohneLsg" src="https://www.geogebra.org/material/iframe/id/tR38n6Zp/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_2_Bsp_redundant">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_Bsp_redundant').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>LGS mit redundanten Gleichungen</b></h3>
+                      $$ \begin{eqnarray}
+                      x_1 &+~  x_2 &+~ x_3 &= 6 \\
+                      3 x_1 &+~2 x_2 &+~  x_3 &= 10 \\
+                      2 x_1 &+~3 x_2 &+~4 x_3 &= 20
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_2_Bsp_redundant" src="https://www.geogebra.org/material/iframe/id/yg8dtmxM/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_2_Bsp_ueberbest">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_Bsp_ueberbest').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Überbestimmtes LGS</b></h3>
+                      $$ \begin{eqnarray}
+                      2 x_1 &-~  x_2  &= 5 \\
+                        x_1 &-~3 x_2  &= -5 \\
+                      6 x_1 &-~2 x_2  &= 18 \\
+                        x_1 &+~  x_2  &= 7
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_2_Bsp_ueberbest" src="https://www.geogebra.org/material/iframe/id/m84CSADN/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_2_Bsp_homogen">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_Bsp_homogen').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Homogenes LGS</b></h3>
+                      $$ \begin{eqnarray}
+                         x_1 &-~  x_2 &+~5 x_3 &= 0 \\
+                       3 x_1 &-~8 x_2 &-~  x_3 &= 0 \\
+                      10 x_1 &+~5 x_2 &-~2 x_3 &= 0
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_2_Bsp_homogen" src="https://www.geogebra.org/material/iframe/id/bnEbYZqh/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="1_2_Bsp_parameter">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_Bsp_parameter').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>LGS mit Parametern</b></h3>
+                      $$ \begin{eqnarray}
+                         x_1 &+~  x_2 &-~  x_3 &= 1 \\
+                       2 x_1 &+~3 x_2 &+~p x_3 &= 3 \\
+                         x_1 &+~p x_2 &+~3 x_3 &= 2
+                      \end{eqnarray} $$
+                      <iframe scrolling="no" title="1_2_Bsp_parameter" src="https://www.geogebra.org/material/iframe/id/ZdFjSswf/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <!-- HA -->
+                <div class="w3-modal" id="1_2_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('1_2_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3><b>HA1</b></h3>
+                      Für welchen Wert von $p$ hat das LGS eine, unendlich viele und keine Lösung?<br/>
+                      $$ \begin{eqnarray}
+                       p x_1 -&~  x_2 &+~2 x_3 &= 0 \\
+                       2 x_1 +&~p x_2 &-~  x_3 &= 3 \\
+                             & ~p x_2 &+~  x_3 &= 1
+                      \end{eqnarray} $$
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <tr class="w3-pale-red">
+                  <td>30.03.18 7:35</td>
+                  <td>--</td>
+                  <td>(Karfreitag)</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>06.04.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>2.1</i> Vektoren</td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_1_Def_Skalarprodukt').style.display='block';return false;">Skalarprodukt</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_1_Bsp_Skalarprodukt').style.display='block';return false;">Skalarprodukt</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_1_HA1').style.display='block';return false;">1</a>
+                  </td>
+                </tr>
+                <div class="w3-modal" id="2_1_Def_Skalarprodukt">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_1_Def_Skalarprodukt').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Definition <b>Skalarprodukt</b></h3>
+                      <ul class="w3-ul w3-card-4" style="width:100%">
+                        <li>
+                          $$
+                          \mathbf{a} \cdot \mathbf{b} =
+                          \left\vert \mathbf{a} \right\vert
+                          \left\vert \mathbf{b} \right\vert
+                          cos \angle (\mathbf{a}, \mathbf{b})
+                          $$
+                        </li>
+                        <li>
+                          $$
+                          \mathbf{a} \cdot \mathbf{b} =
+                          \begin{pmatrix}a_1 \\ a_2 \\ a_3\end{pmatrix} \cdot
+                          \begin{pmatrix}b_1 \\ b_2 \\ b_3\end{pmatrix} =
+                          a_1 \cdot b_1 + a_2 \cdot b_2 + a_3 \cdot b_3
+                          $$
+                        </li>
+                      </ul>
+                      <br/>
+                      </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_1_Bsp_Skalarprodukt">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_1_Bsp_Skalarprodukt').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Skalarprodukt</b></h3>
+                      <iframe scrolling="no" title="2_1_Bsp_Skalarprodukt" src="https://www.geogebra.org/material/iframe/id/zbWb9axN/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_1_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_1_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3><b>HA1</b></h3>
+                      <img src="HA2_1.png" alt="HA"/>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <tr>
+                  <td>13.04.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>2.2</i> Vektoren</td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_2_Def_Vektorprodukt').style.display='block';return false;">Vektorprodukt</a>
+                    <a href="#" onclick="document.getElementById('2_2_Def_Spatprodukt').style.display='block';return false;">Spatprodukt</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_2_Bsp_Vektorprodukt').style.display='block';return false;">Vektorprodukt</a>
+                    <a href="#" onclick="document.getElementById('2_2_Bsp_Spatprodukt').style.display='block';return false;">Spatprodukt</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_2_HA1').style.display='block';return false;">1</a>
+                    <a href="#" onclick="document.getElementById('2_2_HA2').style.display='block';return false;">2</a>
+                    <a href="#" onclick="document.getElementById('2_2_HA3').style.display='block';return false;">3</a>
+                  </td>
+                </tr>
+
+                <div class="w3-modal" id="2_2_Def_Vektorprodukt">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_Def_Vektorprodukt').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Definition <b>Vektorprodukt</b></h3>
+                      $$
+                      \mathbf{a} \times \mathbf{b} =
+                      \begin{pmatrix}a_1 \\ a_2 \\ a_3\end{pmatrix} \times
+                      \begin{pmatrix}b_1 \\ b_2 \\ b_3\end{pmatrix} =
+                      \begin{pmatrix}a_2 b_3 - a_3 b_2  \\
+                      a_3 b_1 - a_1 b_3  \\
+                      a_1 b_2 - a_2 b_1  \\\end{pmatrix}
+                      $$
+                      <br/>
+                      </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_2_Def_Spatprodukt">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_Def_Spatprodukt').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Definition <b>Spatprodukt</b></h3>
+                      <ul class="w3-ul w3-card-4" style="width:100%">
+                        <li>
+                          $$
+                          [\mathbf{a}, \mathbf{b}, \mathbf{c}] =
+                          \mathbf{a} \cdot (\mathbf{b} \times \mathbf{c})
+                          $$
+                        </li>
+                        <li>
+                          $$
+                          [\mathbf{a}, \mathbf{b}, \mathbf{c}] =
+                          [\begin{pmatrix}a_1 \\ a_2 \\ a_3\end{pmatrix},
+                          \begin{pmatrix}b_1 \\ b_2 \\ b_3\end{pmatrix},
+                          \begin{pmatrix}c_1 \\ c_2 \\ c_3\end{pmatrix}] =\\
+                          a_1 (b_2 c_3 - b_3 c_2) +
+                          a_2 (b_3 c_1 - b_1 c_3) +
+                          a_3 (b_1 c_2 - b_2 c_1)
+                          $$
+                        </li>
+                      </ul>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <!-- bsp -->
+                <div class="w3-modal" id="2_2_Bsp_Vektorprodukt">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_Bsp_Vektorprodukt').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Vektorprodukt</b></h3>
+                      <iframe scrolling="no" title="2_2_Bsp_Vektorprodukt" src="https://www.geogebra.org/material/iframe/id/R2mAkPnN/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_2_Bsp_Spatprodukt">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_Bsp_Spatprodukt').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Spatprodukt</b></h3>
+                      <iframe scrolling="no" title="2_2_Bsp_Spatprodukt" src="https://www.geogebra.org/material/iframe/id/xk59YgSf/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <!-- HA -->
+                <div class="w3-modal" id="2_2_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>1</b></h3>
+                      Gegeben sind<br/>
+                      $ \mathbf{a} = \begin{pmatrix}2 \\ 3\end{pmatrix},~~~
+                        \mathbf{b} = \begin{pmatrix}5 \\ 4\end{pmatrix},~~~
+                        \mathbf{c} = \begin{pmatrix}3 \\ -1\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> Die Länge der Vektoren,<br/>
+                      <b>b)</b> den Betrag des Skalarprodukts $\mathbf{a} \cdot b$,<br/>
+                      <b>c)</b> den Winkel zwischen $b$ und $c$,<br/>
+                      <s><b>d)</b> das Kreuzrodukt $\mathbf{a} \times c$,<br/>
+                      <b>e)</b> das Spatprodukt $[\mathbf{a}, b, c]$.<br/></s>
+                      <a href="https://www.geogebra.org/m/bYTsEy62">Lsg</a><br/>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_2_HA2">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_HA2').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>2</b></h3>
+                      Gegeben sind<br/>
+                      $ \mathbf{a} = \begin{pmatrix}-2 \\ -1 \\ 2\end{pmatrix},~~~
+                        \mathbf{b} = \begin{pmatrix}-5 \\ 3 \\ 4\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> Ein Einheitsvektor in Richtung von $a$,<br/>
+                      <b>b)</b> die Projektion von $a$ in Richtung $b$.<br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_2_HA3">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_2_HA3').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>3</b></h3>
+                      Der Vektor $a$ hat die Länge $4$, und der Vektor $b$ die Länge $2$.
+                      Der Winkel zwischen beiden beträgt $120^{\circ}$.
+                      Wie lang ist dann der Vektor $u=a+2b$.
+                      (Tipp: wenden Sie die Regel $\left\vert \mathbf{u} \right\vert = \sqrt{\mathbf{u} \cdot \mathbf{u}}$ an.)
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <tr>
+                  <td>20.04.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>2.3</i> Vektoren</td>
+                  <td>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_3_Bsp_Winkel').style.display='block';return false;">Winkel</a>
+                    <a href="#" onclick="document.getElementById('2_3_Bsp_Entwicklungssatz').style.display='block';return false;">Entwicklungssatz</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_3_HA1').style.display='block';return false;">1</a>
+                    <a href="#" onclick="document.getElementById('2_3_HA2').style.display='block';return false;">2</a>
+                  </td>
+                </tr>
+                <!-- bsp -->
+                <div class="w3-modal" id="2_3_Bsp_Entwicklungssatz">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_3_Bsp_Entwicklungssatz').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Entwicklungssatz</b></h3>
+                      <iframe scrolling="no" title="2_3_Bsp_Entwicklungssatz" src="https://www.geogebra.org/material/iframe/id/xJqgkC7W/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_3_Bsp_Winkel">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_3_Bsp_Winkel').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Beispiel <b>Winkel</b> nach Parameter</h3>
+                      <iframe scrolling="no" title="2_3_Bsp_Winkel" src="https://www.geogebra.org/material/iframe/id/STHv6Cff/width/777/height/440/border/888888/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/false" width="777px" height="440px" style="border:0px;"> </iframe>
+                    </div>
+                  </div>
+                </div>
+                <!-- HA -->
+                <div class="w3-modal" id="2_3_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_3_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>1</b></h3>
+                      Gegeben sind<br/>
+                      $ \mathbf{a} = \begin{pmatrix}6\\ 1\\ 1\end{pmatrix},~~~
+                         \mathbf{b} = \begin{pmatrix}0\\ 3\\ -1\end{pmatrix},~~~
+                         \mathbf{c} = \begin{pmatrix}-2\\ 3\\ 5\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> den Skalar $\lambda$, so dasss $\mathbf{a} + \lambda \cdot \mathbf{b}$ senkrecht auf $\mathbf{c}$ steht,<br/>
+                      <b>b)</b> den Betrag des Skalarprodukts $\mathbf{a} \cdot \mathbf{b}$,<br/>
+                      <b>c)</b> den Betrag des Vektorprodukts $\mathbf{a} \times \mathbf{b}$,<br/>
+                      <b>d)</b> den Winkel zwischen $\mathbf{a} \times \mathbf{b}$ und $\mathbf{c}$,<br/>
+                      <b>e)</b> die Winkel $\alpha_1$, $\alpha_2$ und $\alpha_3$ von $\mathbf{a}$ mit den Koordinatenachsen.<br/>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_3_HA2">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_3_HA2').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>2</b></h3>
+                      Gegeben sind<br/>
+                      $ \mathbf{a} = \begin{pmatrix}-2 \\ -1 \\ a_3\end{pmatrix},~~~
+                        \mathbf{b} = \begin{pmatrix}-5 \\ 3 \\ 7\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> für welche Werte von $a_3$ hat $\mathbf{a}$ eine Länge von $3$,<br/>
+                      <b>b)</b> den Wert von $a_3$, so dass $\angle(\mathbf{a}, \mathbf{b})$ gleich $90^{\circ}$ ist.<br/>
+                    </div>
+                  </div>
+                </div>
+                <tr>
+                  <td>27.04.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>2.4</i> Vektoren</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr>
+                  <td>04.05.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>2.5</i> Vektoren</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr>
+                  <td>11.05.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>2.6</i> Vektoren</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr>
+                  <td>18.05.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td><i>3.1</i> Matrizen</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr class="w3-pale-red">
+                  <td>25.05.18 7:35</td>
+                  <td>--</td>
+                  <td>(Pfingsten)</td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>01.06.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td>Matrizen</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr class="w3-pale-green">
+                  <td>07.06.18 15:45</td>
+                  <td>S01.210</td>
+                  <td><b>Midterm</b></td>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>08.06.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td>Matrizen</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr>
+                  <td>15.06.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td>Matrizen</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+                <tr>
+                  <td>22.06.18 7:35</td>
+                  <td>S01.-122</td>
+                  <td>Wiederholung</td>
+                  <td></td>
+                  <td class="w3-text-grey">tbd</td>
+                  <td class="w3-text-grey">tba</td>
+                </tr>
+              </table>
+              <!--<div class="w3-container">
+                <p>tba</p>
+                <div class="w3-row">
+                  <div class="w3-col m8 s12">
+                    <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE »</b></button></p>
+                  </div>
+                  <div class="w3-col m4 w3-hide-small">
+                    <p><span class="w3-padding-large w3-right"><b>Comments  </b> <span class="w3-tag">0</span></span></p>
+                  </div>
+                </div>
+              </div-->
+            </div>
+            <hr>
+            <!-- END BLOG ENTRIES -->
+          </div>
+          <!-- Introduction menu -->
+          <div class="w3-col l4">
+            <!-- Posts -->
+            <div class="w3-card w3-margin">
+              <div class="w3-container w3-padding">
+                <h4>Links</h4>
+              </div>
+              <ul class="w3-ul w3-hoverable w3-white">
+                <li class="w3-padding-16">
+                  <i class="material-icons w3-left w3-margin-right" style="width:50px">trending_up</i>
+                  <a href="https://moodle.hs-esslingen.de/moodle/pluginfile.php/210208/mod_resource/content/1/merkblatt_ss18.pdf" target="_blank">
+                    <span class="w3-large">Infos Tutorium</span><br/>
+                  </a>
+                </li>
+                <li class="w3-padding-16">
+                  <i class="material-icons w3-left w3-margin-right" style="width:50px">description</i>
+                  <a href="https://www2.hs-esslingen.de/~stahl/" target="_blank">
+                    <span class="w3-large">Aufgaben Tutorium</span><br/>
+                  </a>
+                  <span>(bitte im Voraus herunterladen und mitbringen)</span><br/>
+                </li>
+                <li class="w3-padding-16">
+                  <i class="material-icons w3-left w3-margin-right" style="width:50px">subject</i>
+                  <a href="https://moodle.hs-esslingen.de/moodle/course/view.php?id=920 " target="_blank">
+                    <span class="w3-large">weiter Unterlagen Prof Stämpfle</span><br/>
+                  </a>
+                  <span>(Passwort in Vorlesung erfragen)</span><br/>
+                </li>
+                <li class="w3-padding-16">
+                  <i class="material-icons w3-left w3-margin-right" style="width:50px">assignment</i>
+                  <a href="https://www.hs-esslingen.de/de/nc/hochschule/fakultaeten/grundlagen/laboratorien/mathematisches-institut/pruefungsaufgaben-mathematik/ekb-epb-mbb-fzb-map-fmp.html" target="_blank">
+                    <span class="w3-large">Infos und alte Prüfungen / Midterms</span><br/>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <hr>
+
+            <!-- About Card -->
+            <div class="w3-card w3-margin w3-margin-top">
+              <div style="width:100%; height: 70px; overflow: hidden">
+                <img src="http://iav2016.inf.h-brs.de/photos/prev/IMG_7170.JPG" style="width:100%; margin-top: -230px;">
+              </div>
+              <div class="w3-container w3-white">
+                <h4>Christian Henkel, MSc</h4>
+                <p>Kontakt: <b>christian.henkel(at)hs-esslingen.de</b></p>
+                <a href="https://www.linkedin.com/in/henkelchristian/" target="_blank"><p>Lebenslauf</p></a>
+                <a href="https://www.researchgate.net/profile/Christian_Henkel3" target="_blank"><p>Veröffentlichungen</p></a>
+                <a href="https://twitter.com/ct2034" target="_blank"><p>Twitter</p></a>
+              </div>
+            </div><hr>
+
+            <!-- Labels / tags
+            <div class="w3-card w3-margin">
+              <div class="w3-container w3-padding">
+                <h4>Tags</h4>
+              </div>
+              <div class="w3-container w3-white">
+                <p><span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+                <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+              </p>
+            </div>
+          </div>-->
+
+          <!-- END Introduction Menu -->
+        </div>
+        <!-- END GRID -->
+      </div><br/>
+      <!-- END w3-content -->
+    </div>
+    <!-- Footer -->
+    <footer class="w3-container w3-dark-grey w3-padding-32 w3-margin-top">
+      <!--<button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom">Previous</button>
+      <button class="w3-button w3-black w3-padding-large w3-margin-bottom">Next »</button>-->
+      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
+  </body>
+</html>

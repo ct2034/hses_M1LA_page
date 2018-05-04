@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'>
   MathJax.Hub.Config({
   tex2jax: {
   inlineMath: [['$','$'], ['\\(','\\)']],
@@ -499,17 +499,97 @@
                   <td>S01.-122</td>
                   <td><i>2.4</i> Vektoren</td>
                   <td></td>
-                  <td class="w3-text-grey">tbd</td>
-                  <td class="w3-text-grey">tba</td>
+                  <td class="w3-text-grey"></td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_4_HA1').style.display='block';return false;">1</a>
+                    <a href="#" onclick="document.getElementById('2_4_HA2').style.display='block';return false;">2</a>
+                  </td>
                 </tr>
+                <!-- HA -->
+                <div class="w3-modal" id="2_4_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_4_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>1</b></h3>
+                      Gegeben sind<br/>
+                      $ \mathbf{a} = \begin{pmatrix}6\\ 1\end{pmatrix},~~~
+                         \mathbf{b} = \begin{pmatrix}0\\ 2\end{pmatrix},~~~
+                         \mathbf{c} = \begin{pmatrix}-6\\ 3\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> Sind $\mathbf{a}$ und $\mathbf{b}$ linear unabhängig?<br/>
+                      <b>b)</b> Bestimmen Sie $\lambda_1$, $\lambda_2$, so dass $\lambda_1 \mathbf{a} + \lambda_2 \mathbf{b} = \mathbf{c}$ <br/>
+                      <br/>
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_4_HA2">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_4_HA2').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>2</b></h3>
+                      Gegeben sind<br/>
+                      $ \mathbf{a} = \begin{pmatrix}3\\ 1\\ 2\end{pmatrix},~~~
+                         \mathbf{b} = \begin{pmatrix}-4\\ -3\\ 2\end{pmatrix},~~~
+                         \mathbf{c} = \begin{pmatrix}5\\ 2\\ 1\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> Sind $\mathbf{a}$, $\mathbf{b}$ und $\mathbf{c}$ linear unabhängig?<br/>
+                      <b>b)</b> Bestimmen Sie $\lambda_1$, $\lambda_2$ und $\lambda_3$, so dass $\lambda_1 \mathbf{a} + \lambda_2 \mathbf{b} + \lambda_3 \mathbf{c} = \begin{pmatrix}1\\ 1\\ 1\end{pmatrix}$ <br/>
+                      <a href="https://www.geogebra.org/m/dAyTVGr9" target="_blank">Lsg</a><br/>                      <br/>
+                    </div>
+                  </div>
+                </div>
                 <tr>
                   <td>04.05.18 7:35</td>
                   <td>S01.-122</td>
                   <td><i>2.5</i> Vektoren</td>
                   <td></td>
-                  <td class="w3-text-grey">tbd</td>
-                  <td class="w3-text-grey">tba</td>
+                  <td>
+                    <a href="https://www.geogebra.org/m/z6QASRuK" target="_blank">Ebene</a>
+                    <a href="https://www.geogebra.org/m/FdUtTZyN" target="_blank">Strecke</a>
+                  </td>
+                  <td>
+                    <a href="#" onclick="document.getElementById('2_5_HA1').style.display='block';return false;">1</a>
+                    <a href="#" onclick="document.getElementById('2_5_HA2').style.display='block';return false;">2</a>
+                  </td>
                 </tr>
+                <!-- HA -->
+                <div class="w3-modal" id="2_5_HA1">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_5_HA1').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>1</b></h3>
+                      tbd
+                    </div>
+                  </div>
+                </div>
+                <div class="w3-modal" id="2_5_HA2">
+                  <div class="w3-modal-content">
+                    <div class="w3-container">
+                      <span onclick="document.getElementById('2_5_HA2').style.display='none'"
+                      class="w3-button w3-display-topright">&times;</span>
+                      <h3>Hausaufgabe <b>2</b></h3>
+                      Gegeben ist die folgende Ebene:<br/>
+                      $ E_1: \mathbf{x} = \begin{pmatrix}1 \\ 0 \\ 0\end{pmatrix} + \lambda \begin{pmatrix}3 \\ 1 \\ 1\end{pmatrix} + \mu \begin{pmatrix}-1 \\ -1 \\ 0\end{pmatrix}
+                      $.<br/>
+                      <br/>
+                      Bestimmen Sie:<br/>
+                      <b>a)</b> die Punkte $P$, $Q$ und $R$ und die Darstellung in der Dreipunktform,<br/>
+                      <b>b)</b> den Normalenvektor $\mathbf{n}$ und die Parameterlose Darstellung,<br/>
+                      <b>c)</b> die Hessesche Normalform,<br/>
+                      <b>d)</b> ob der Punkt $X(4 \vert -1 \vert 2)$ in der Ebene liegt und wenn ja $\lambda_X$ und $\mu_X$,<br/>
+                      <b>e)</b> und ob der Punkt $Y(-2 \vert 1 \vert 8)$ in der Ebene liegt und wenn ja $\lambda_Y$ und $\mu_Y$.<br/>
+                      <!-- <a href="https://www.geogebra.org/m/TBA" target="_blank">Lsg</a><br/> -->
+                      <br/>
+                    </div>
+                  </div>
+                </div>
                 <tr>
                   <td>11.05.18 7:35</td>
                   <td>S01.-122</td>
@@ -537,7 +617,7 @@
                 <tr>
                   <td>01.06.18 7:35</td>
                   <td>S01.-122</td>
-                  <td>Matrizen</td>
+                  <td><i>3.2</i> Matrizen</td>
                   <td></td>
                   <td class="w3-text-grey">tbd</td>
                   <td class="w3-text-grey">tba</td>
@@ -553,7 +633,7 @@
                 <tr>
                   <td>08.06.18 7:35</td>
                   <td>S01.-122</td>
-                  <td>Matrizen</td>
+                  <td><i>3.3</i> Matrizen</td>
                   <td></td>
                   <td class="w3-text-grey">tbd</td>
                   <td class="w3-text-grey">tba</td>
@@ -561,7 +641,7 @@
                 <tr>
                   <td>15.06.18 7:35</td>
                   <td>S01.-122</td>
-                  <td>Matrizen</td>
+                  <td><i>3.4</i> Matrizen</td>
                   <td></td>
                   <td class="w3-text-grey">tbd</td>
                   <td class="w3-text-grey">tba</td>
@@ -620,7 +700,7 @@
                 </li>
                 <li class="w3-padding-16">
                   <i class="material-icons w3-left w3-margin-right" style="width:50px">assignment</i>
-                  <a href="https://www.hs-esslingen.de/de/nc/hochschule/fakultaeten/grundlagen/laboratorien/mathematisches-institut/pruefungsaufgaben-mathematik/ekb-epb-mbb-fzb-map-fmp.html" target="_blank">
+                  <a href="https://intranetportal.hs-esslingen.de/de/he-portal/fakultaeten/gl/mathematisches-institut/pruefungsaufgaben-mathematik/ekb-epb-mbb-fzb-map-fmp.html" target="_blank">
                     <span class="w3-large">Infos und alte Prüfungen / Midterms</span><br/>
                   </a>
                 </li>

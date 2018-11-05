@@ -1,5 +1,4 @@
 import numpy as np
-from itertools import enumerate
 
 SIZEA = 4
 SIZEB = 4
@@ -18,10 +17,24 @@ def goal_check(A, x):
         return np.array([])
 
 def make_tex(A, x, b):
+    """
+    e.g.:
+    -3x_1 &  +x_2 & -3x_3 & = & -2 \\
+    -4x_1 & +2x_2 & -4x_3 & = & -2 \\
+     3x_1 &  -x_2 &  +x_3 & = & -2
+     """
     tex = ""
-    for l, il in enumerate(A):
-        for c, ic in enumerate(A):
-
+    for il, l in enumerate(A):
+        if len(tex):
+            tex += "\\\\\n"
+        for ic, c in enumerate(l):
+            tex += "{0}x_{1} & ".format(int(c), int(ic)) if c != 0 else " & "
+        tex += "= {0}".format(int(b[il][0]))
+    tex += "\n% lsg: ("
+    for n in x[0]:
+        tex += "{0}, ".format(int(n))
+    tex += ")"
+    return tex
 
 if __name__ == "__main__":
     b = np.array([])
@@ -29,6 +42,4 @@ if __name__ == "__main__":
         A = rand_nice_numbers(SIZEA, SIZEB)
         x = rand_nice_numbers(1, SIZEB)
         b = goal_check(A, x)
-    print(A)
-    print(x)
-    print(b)
+    print(make_tex(A, x, b))

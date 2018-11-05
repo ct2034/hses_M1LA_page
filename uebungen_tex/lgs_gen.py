@@ -1,4 +1,5 @@
 import numpy as np
+from itertools import enumerate
 
 SIZEA = 4
 SIZEB = 4
@@ -15,6 +16,12 @@ def goal_check(A, x):
         return b
     else:
         return np.array([])
+
+def make_tex(A, x, b):
+    tex = ""
+    for l, il in enumerate(A):
+        for c, ic in enumerate(A):
+
 
 if __name__ == "__main__":
     b = np.array([])

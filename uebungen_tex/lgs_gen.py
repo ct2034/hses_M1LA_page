@@ -1,3 +1,5 @@
+import random
+
 import numpy as np
 import pylatex
 
@@ -16,10 +18,36 @@ class Array(pylatex.base_classes.Environment):
     content_separator = "\n"
 
 def rand_nice_numbers(a, b=1):
-    return np.round(np.random.rand(a, b) * 10 - 5)
+    return np.round(np.random.rand(a, b) * 11 - 5)
 
-def goal_check(A, x):
-    b = np.dot(A, x.T)
+def goal_check(A, x, no_solution, inf_solutions, homogen):
+    if homogen:
+        b = np.zeros([A.shape[0], x.T.shape[1]])
+        inf_solutions = random.randint(0,1)
+    else:
+        b = np.dot(A, x.T)
+        if (np.count_nonzero(b == 0) == A.shape[0]):
+            return np.array([])
+    if no_solution or inf_solutions:
+        if not homogen:
+            b = b + np.round(np.random.rand(1, b.shape[1]) * 2 - 1)
+        n = A.shape[0]
+        if no_solution:
+            if not (np.linalg.matrix_rank(A) != np.linalg.matrix_rank(
+                np.append(A, b, axis=1)
+            )):
+                return np.array([])
+        if inf_solutions:
+            line1 = random.randint(0, A.shape[1]-1)
+            line2 = random.randint(0, A.shape[1]-1)
+            mult = random.randint(-2, 2)
+            while mult == 1:
+                mult = random.randint(-2, 2)
+            A[line1,:] = mult * A[line2,:]
+            if not (np.linalg.matrix_rank(A) == np.linalg.matrix_rank(
+                np.append(A, b, axis=1)
+            ) & np.linalg.matrix_rank(A) < n):
+                return np.array([])
     if(
         (np.max(b) <= 2)
         & (np.min(b) >= -2)
@@ -49,25 +77,33 @@ def make_tex(A, x, b):
         tex += "=&{0}".format(int(b[il][0]))
     return tex
 
-def get_an_lgs(eqns, vars):
+def get_a_lgs(eqns, vars, no_or_inf_solutions, homogen):
     b = np.array([])
-    while not b.any():
+    while not len(b):
         A = rand_nice_numbers(eqns, vars)
         x = rand_nice_numbers(1, vars)
-        b = goal_check(A, x)
+        if homogen:
+            x = np.zeros([1, vars])
+        if no_or_inf_solutions:
+            r = random.randint(0, 2)
+            opts = [(False, False), (True, False), (False, True)]
+            no_solution, inf_solutions = opts[r]
+            b = goal_check(A, x, no_solution, inf_solutions, homogen)
+        else:
+            b = goal_check(A, x, False, False, homogen)
     return make_tex(A, x, b), x[0]
 
-def append_an_lgs(doc, lsgen, eqns, vars):
+def append_a_lgs(doc, lsgen, eqns, vars, no_or_inf_solutions=False, homogen=False):
     doc.append(pylatex.Command('item'))
     doc.append(pylatex.Command('('))
     doc.append(pylatex.Command('displaystyle'))
     with doc.create(Array(options="t", arguments="rrrrrr")):
-        ue, lsg = get_an_lgs(eqns, vars)
+        ue, lsg = get_a_lgs(eqns, vars, no_or_inf_solutions, homogen)
         doc.append(ue)
         lsgen.append(lsg)
     doc.append(pylatex.Command(')'))
 
-def append_an_lsg(doc, lsg):
+def append_a_lsg(doc, lsg):
     doc.append(pylatex.Command('item'))
     doc.append(pylatex.Command('('))
     doc.append(pylatex.Command('displaystyle'))
@@ -91,25 +127,72 @@ if __name__ == "__main__":
         d.preamble.append(pylatex.Command('usepackage', 'amsfonts'))
         d.preamble.append(pylatex.Command('date', pylatex.NoEscape(r'\today')))
         d.append(pylatex.Command('maketitle'))
-    lsgen = []
-    sec = 'LGS'
+    sec = 'Lineare Gleichungsysteme mit einer Lösung'
     with doc_ue.create(pylatex.Section(sec)):
-        with doc_ue.create(pylatex.Subsection('Eine Lösung')):
+        lsgen_one = []
+        with doc_ue.create(pylatex.Subsection('Vollständig Bestimmt')):
             doc_ue.append("Lösen Sie mit Gauß-Elimination die folgenden Gleichungsysteme:\n")
             doc_ue.append("(Tipp: Alle haben ")
             doc_ue.append(pylatex.utils.bold('genau eine '))
             doc_ue.append("Lösung.)")
             with doc_ue.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
                 for i in range(2):
-                    append_an_lgs(doc_ue, lsgen, 2, 2)
+                    append_a_lgs(doc_ue, lsgen_one, 2, 2)
                 for i in range(4):
-                    append_an_lgs(doc_ue, lsgen, 3, 3)
+                    append_a_lgs(doc_ue, lsgen_one, 3, 3)
                 for i in range(3):
-                    append_an_lgs(doc_ue, lsgen, 4, 4)
+                    append_a_lgs(doc_ue, lsgen_one, 4, 4)
+        lsgen_ueb = []
+        with doc_ue.create(pylatex.Subsection('Überbestimmt')):
+            doc_ue.append("Lösen Sie die folgenden überbestimmten Gleichungsysteme:\n")
+            doc_ue.append("(Tipp: Alle haben ")
+            doc_ue.append(pylatex.utils.bold('genau eine '))
+            doc_ue.append("Lösung.)")
+            with doc_ue.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+                for i in range(2):
+                    append_a_lgs(doc_ue, lsgen_ueb, 3, 2)
+                for i in range(2):
+                    append_a_lgs(doc_ue, lsgen_ueb, 4, 3)
+        lsgen_unt = []
+        # with doc_ue.create(pylatex.Subsection('Unterbestimmt')):
+        #     doc_ue.append("Lösen Sie die folgenden unterbestimmten Gleichungsysteme:\n")
+        #     doc_ue.append("(Tipp: Alle haben ")
+        #     doc_ue.append(pylatex.utils.bold('genau eine '))
+        #     doc_ue.append("Lösung.)")
+        #     with doc_ue.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+        #         for i in range(2):
+        #             append_a_lgs(doc_ue, lsgen_unt, 2, 3)
+        #         for i in range(2):
+        #             append_a_lgs(doc_ue, lsgen_unt, 3, 4)
+    # LÖSUNG
     with doc_lsg.create(pylatex.Section(sec)):
-        with doc_lsg.create(pylatex.Subsection('Eine Lösung')):
+        with doc_lsg.create(pylatex.Subsection('Vollständig Bestimmt')):
             with doc_lsg.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
-                for l in lsgen:
-                    append_an_lsg(doc_lsg, l)
+                for l in lsgen_one:
+                    append_a_lsg(doc_lsg, l)
+        with doc_lsg.create(pylatex.Subsection('Überbestimmt')):
+            with doc_lsg.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+                for l in lsgen_ueb:
+                    append_a_lsg(doc_lsg, l)
+        # with doc_lsg.create(pylatex.Subsection('Unterbestimmt')):
+        #     with doc_lsg.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+        #         for l in lsgen_unt:
+        #             append_a_lsg(doc_lsg, l)
+    # ---------------------------------------------------------------------------
+    # sec = 'Lineare Gleichungsysteme mit anderenen Lösungsmengen'
+    # with doc_ue.create(pylatex.Section(sec)):
+    #     lsgen_hom = []
+    #     with doc_ue.create(pylatex.Subsection('Homogen')):
+    #         doc_ue.append("Bestimmen Sie die Lösungsmenge folgender Gleichungsysteme:\n")
+    #         with doc_ue.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+    #             for i in range(4):
+    #                 append_a_lgs(doc_ue, lsgen_hom, 3, 3, False, True)
+    # # LÖSUNG
+    # with doc_lsg.create(pylatex.Section(sec)):
+    #     with doc_lsg.create(pylatex.Subsection('Homogen')):
+    #         with doc_lsg.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+    #             for l in lsgen_hom:
+    #                 append_a_lsg(doc_lsg, l)
+
     for d in [doc_ue, doc_lsg]:
-        d.generate_pdf(clean_tex=False)
+        d.generate_pdf(clean_tex=True)

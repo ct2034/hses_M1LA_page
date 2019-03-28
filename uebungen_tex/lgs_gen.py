@@ -4,12 +4,14 @@ import random
 import numpy as np
 import pylatex
 
+
 class Enumerate(pylatex.base_classes.Environment):
     """A class to wrap LaTeX's enumerate environment."""
 
     packages = [pylatex.Package('enumitem')]
     escape = False
     content_separator = "\n"
+
 
 class Array(pylatex.base_classes.Environment):
     """A class to wrap LaTeX's array environment."""
@@ -18,17 +20,19 @@ class Array(pylatex.base_classes.Environment):
     escape = False
     content_separator = "\n"
 
+
 def rand_nice_numbers(a, b=1):
     return np.round(np.random.rand(a, b) * 11 - 5)
+
 
 def goal_check(A, x, no_solution, inf_solutions, homogen):
     if homogen:
         b = np.zeros([A.shape[0], x.T.shape[1]])
-        inf_solutions = random.randint(0,1)
+        inf_solutions = random.randint(0, 1)
     else:
         b = np.dot(A, x.T)
         if (np.count_nonzero(b == 0) == A.shape[0]):
-            return np.array([])
+            return np.array([]), x
     if no_solution or inf_solutions:
         if not homogen:
             b = b + np.round(np.random.rand(1, b.shape[1]) * 2 - 1)
@@ -37,26 +41,30 @@ def goal_check(A, x, no_solution, inf_solutions, homogen):
             if not (np.linalg.matrix_rank(A) != np.linalg.matrix_rank(
                 np.append(A, b, axis=1)
             )):
-                return np.array([])
+                x = ['no']
+                return np.array([]), x
         if inf_solutions:
             line1 = random.randint(0, A.shape[1]-1)
             line2 = random.randint(0, A.shape[1]-1)
-            mult = random.randint(-2, 2)
-            while mult == 1:
-                mult = random.randint(-2, 2)
-            A[line1,:] = mult * A[line2,:]
+            while line1 == line2:
+                line2 = random.randint(0, A.shape[1]-1)
+            mult = random.choice([-3, -2, -1, 2, 3])
+            A[line1, :] = mult * A[line2, :]
+            b[line1] = mult * b[line2]
             if not (np.linalg.matrix_rank(A) == np.linalg.matrix_rank(
                 np.append(A, b, axis=1)
             ) & np.linalg.matrix_rank(A) < n):
-                return np.array([])
+                x = ['inf']
+                return np.array([]), x
     if(
         (np.max(b) <= 2)
         & (np.min(b) >= -2)
         & (np.count_nonzero(A == 0) <= 1)
     ):
-        return b
+        return b, x
     else:
-        return np.array([])
+        return np.array([]), x
+
 
 def make_tex(A, x, b):
     """
@@ -78,6 +86,7 @@ def make_tex(A, x, b):
         tex += "=&{0}".format(int(b[il][0]))
     return tex
 
+
 def get_a_lgs(eqns, vars, no_or_inf_solutions, homogen):
     b = np.array([])
     while not len(b):
@@ -86,13 +95,14 @@ def get_a_lgs(eqns, vars, no_or_inf_solutions, homogen):
         if homogen:
             x = np.zeros([1, vars])
         if no_or_inf_solutions:
-            r = random.randint(0, 2)
-            opts = [(False, False), (True, False), (False, True)]
-            no_solution, inf_solutions = opts[r]
-            b = goal_check(A, x, no_solution, inf_solutions, homogen)
+            no_solution, inf_solutions = random.choice(
+                [(False, False), (True, False), (False, True)]
+            )
+            b, x = goal_check(A, x, no_solution, inf_solutions, homogen)
         else:
-            b = goal_check(A, x, False, False, homogen)
+            b, x = goal_check(A, x, False, False, homogen)
     return make_tex(A, x, b), x[0]
+
 
 def append_a_lgs(doc, lsgen, eqns, vars, no_or_inf_solutions=False, homogen=False):
     doc.append(pylatex.Command('item'))
@@ -104,6 +114,7 @@ def append_a_lgs(doc, lsgen, eqns, vars, no_or_inf_solutions=False, homogen=Fals
         lsgen.append(lsg)
     doc.append(pylatex.Command(')'))
 
+
 def append_a_lsg(doc, lsg):
     doc.append(pylatex.Command('item'))
     doc.append(pylatex.Command('('))
@@ -111,7 +122,7 @@ def append_a_lsg(doc, lsg):
     doc.append(pylatex.NoEscape('\\mathbb{L} = \\{('))
     doc.append(", ".join(
         map(str, map(int, lsg))
-        ))
+    ))
     doc.append(pylatex.NoEscape(')\\}'))
     doc.append(pylatex.Command(')'))
 
@@ -180,20 +191,22 @@ if __name__ == "__main__":
         #         for l in lsgen_unt:
         #             append_a_lsg(doc_lsg, l)
     # ---------------------------------------------------------------------------
-    # sec = 'Lineare Gleichungsysteme mit anderenen Lösungsmengen'
-    # with doc_ue.create(pylatex.Section(sec)):
-    #     lsgen_hom = []
-    #     with doc_ue.create(pylatex.Subsection('Homogen')):
-    #         doc_ue.append("Bestimmen Sie die Lösungsmenge folgender Gleichungsysteme:\n")
-    #         with doc_ue.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
-    #             for i in range(4):
-    #                 append_a_lgs(doc_ue, lsgen_hom, 3, 3, False, True)
-    # # LÖSUNG
-    # with doc_lsg.create(pylatex.Section(sec)):
-    #     with doc_lsg.create(pylatex.Subsection('Homogen')):
-    #         with doc_lsg.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
-    #             for l in lsgen_hom:
-    #                 append_a_lsg(doc_lsg, l)
+    sec = 'Lineare Gleichungsysteme mit anderenen Lösungsmengen'
+    with doc_ue.create(pylatex.Section(sec)):
+        lsgen_diff = []
+        with doc_ue.create(pylatex.Subsection('Übungen')):
+            doc_ue.append("Bestimmen Sie die Lösungsmenge folgender Gleichungsysteme:\n")
+            with doc_ue.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+                for i in range(4):
+                    append_a_lgs(doc_ue, lsgen_diff, 2, 2, True, False)
+                for i in range(4):
+                    append_a_lgs(doc_ue, lsgen_diff, 3, 3, True, False)
+    # LÖSUNG
+    with doc_lsg.create(pylatex.Section(sec)):
+        with doc_lsg.create(pylatex.Subsection('Übungen')):
+            with doc_lsg.create(Enumerate(options=pylatex.NoEscape("label={\\alph*)}"))):
+                for l in lsgen_diff:
+                    append_a_lsg(doc_lsg, l)
 
     for d in [doc_ue, doc_lsg]:
         d.generate_pdf(clean_tex=True)
